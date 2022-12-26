@@ -1,7 +1,6 @@
-import { Fragment } from 'react';
 import Box from '@mui/material/Box';
-import MuiLink from '@mui/material/Link';
-import { default as NextLink, LinkProps } from 'next/link';
+import MuiLink, { LinkProps } from '@mui/material/Link';
+import { default as NextLink } from 'next/link';
 
 const Footer = () => {
   return (
@@ -16,22 +15,11 @@ const Footer = () => {
         py: 3,
       }}
     >
-      {[
-        <Fragment key="copyright">
-          &copy; Mark Kopani {new Date().getFullYear()}
-        </Fragment>,
-        <Link key="github" href="https://github.com/mkopani">
-          Github
-        </Link>,
-        <Link key="linkedin" href="https://www.linkedin.com/in/mkopani/">
-          LinkedIn
-        </Link>,
-      ].map((item, index, array) => (
-        <Fragment key={index}>
-          {item}
-          {index < array.length - 1 && <>&nbsp;•&nbsp;</>}
-        </Fragment>
-      ))}
+      <>&copy; Mark Kopani {new Date().getFullYear()}</>
+      <Separator />
+      <Link href="https://github.com/mkopani">Github</Link>
+      <Separator />
+      <Link href="https://www.linkedin.com/in/mkopani/">LinkedIn</Link>
     </Box>
   );
 };
@@ -43,7 +31,9 @@ const Link = ({
   href,
   ...other
 }: LinkProps & { children: React.ReactNode }) => (
-  <NextLink {...other} href={href} passHref>
-    <MuiLink underline="hover">{children}</MuiLink>
-  </NextLink>
+  <MuiLink underline="hover" href={href} component={NextLink} {...other}>
+    {children}
+  </MuiLink>
 );
+
+const Separator = () => <>&nbsp;•&nbsp;</>;

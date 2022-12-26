@@ -21,7 +21,7 @@ const BaseLayout = ({ children, display = 'flex', ...other }: BoxProps) => {
       <Box>
         <Navbar ref={navbarRef} />
       </Box>
-      <Box component="main" sx={{ flexGrow: 1, pt: 10 }}>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <Box height={`calc(100% - ${navbarHeight.current})`}>{children}</Box>
       </Box>
       <Footer />
