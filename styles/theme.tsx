@@ -1,5 +1,5 @@
 import { deepOrange, lightBlue } from '@mui/material/colors';
-import { createTheme, Shadows, ThemeProvider } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, Shadows } from '@mui/material/styles';
 
 export const primaryGradient =
   'background-image: linear-gradient(to bottom, #002949, #033961, #054a79, #085c93, #086ead, #3972bd, #5d74cb, #8175d4, #bb5dbd, #e24093, #f1335c, #e64a19)';
@@ -11,7 +11,7 @@ export const ACCENT_COLOR = '#E64A19';
 export const MIDDLE_COLOR = '#0288D1'
 export const DARKEST_COLOR = '#002949';
 
-const theme = createTheme({
+let theme = createTheme({
   // Disable shadows throughout the app
   shadows: Array(25).fill('none') as Shadows,
 
@@ -45,6 +45,35 @@ const theme = createTheme({
       },
     },
   },
+
+  typography: {
+    fontFamily: 'ChakraPetch',
+  },
 });
+
+theme = createTheme(theme, {
+  typography: {
+    h1: {
+      fontSize: 150,
+      fontFamily: 'BebasNeue',
+      lineHeight: 1,
+      textTransform: 'uppercase',
+      color: theme.palette.text.primary,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 95,
+      },
+    },
+    h2: {
+      fontFamily: 'ChakraPetch',
+      color: theme.palette.text.primary,
+    },
+    h3: {
+      fontFamily: 'ChakraPetch',
+      color: theme.palette.text.primary,
+    },
+  },
+});
+
+theme = responsiveFontSizes(theme);
 
 export default theme;
