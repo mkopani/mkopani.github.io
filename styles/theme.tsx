@@ -60,7 +60,7 @@ theme = createTheme(theme, {
       textTransform: 'uppercase',
       color: theme.palette.text.primary,
       [theme.breakpoints.down('sm')]: {
-        fontSize: 95,
+        fontSize: 130,
       },
     },
     h2: {
