@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Container from '@mui/material/Container';
 import Fade, { FadeProps } from '@mui/material/Fade';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
@@ -14,7 +13,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import BaseLayout from '@/components/BaseLayout';
-import useWindowSize from '@/hooks/useWindowSize';
 import sitemap from '@/sitemap';
 
 type AnimationComponent = 'title' | 'subtitle' | 'menu';
@@ -44,9 +42,6 @@ const makeTransitionProps = (
 });
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { height: windowHeight } = useWindowSize();
-
   return (
     <>
       {/* <Head>
@@ -56,74 +51,73 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
       <BaseLayout
+        noTopPadding
         sx={{
-          height: windowHeight || '100vh',
-          px: 3,
-          display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <Container maxWidth="lg" ref={containerRef}>
+        <Stack
+          spacing={3}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignSelf: 'center',
+            height: '100vh',
+          }}
+        >
           <Stack
-            spacing={3}
-            display="flex"
-            justifyContent="center"
-            alignSelf="center"
+            spacing={1}
+            sx={{
+              mb: 5,
+              display: 'flex',
+              justifyContent: 'center',
+              alignSelf: 'center',
+            }}
           >
+            <Grow {...makeTransitionProps('title')}>
+              <Typography
+                component="div"
+                variant="title"
+                sx={{ textAlign: 'center' }}
+              >
+                Mark Kopani
+              </Typography>
+            </Grow>
+            <CustomSlide component="subtitle">
+              <Typography
+                component="div"
+                variant="h3"
+                sx={{ textAlign: 'center' }}
+              >
+                Full Stack Web3 Developer
+              </Typography>
+            </CustomSlide>
+          </Stack>
+          {/* Site options */}
+          <Fade {...makeTransitionProps('menu')}>
             <Stack
-              spacing={1}
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.5}
               sx={{
-                mb: 5,
                 display: 'flex',
                 justifyContent: 'center',
+                alignItems: 'center',
                 alignSelf: 'center',
+                width: { xs: '100%', md: '65%' }
               }}
             >
-              <Grow {...makeTransitionProps('title')}>
-                <Typography
-                  component="div"
-                  variant="h1"
-                  sx={{ textAlign: 'center' }}
-                >
-                  Mark Kopani
-                </Typography>
-              </Grow>
-              <CustomSlide component="subtitle">
-                <Typography
-                  component="div"
-                  variant="h3"
-                  sx={{ textAlign: 'center' }}
-                >
-                  Full Stack Web3 Developer
-                </Typography>
-              </CustomSlide>
+              {Object.entries(sitemap).map(([route, name]) => (
+                <Box key={route} width="100%">
+                  <SectionCard
+                    name={name}
+                    href={route}
+                  />
+                </Box>
+              ))}
             </Stack>
-            {/* Site options */}
-            <Fade {...makeTransitionProps('menu')}>
-              <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-                spacing={1.5}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignSelf: 'center',
-                  width: { xs: '100%', md: '65%' }
-                }}
-              >
-                {Object.entries(sitemap).map(([route, name]) => (
-                  <Box key={route} width="100%">
-                    <SectionCard
-                      name={name}
-                      href={route}
-                    />
-                  </Box>
-                ))}
-              </Stack>
-            </Fade>
-          </Stack>
-        </Container>
+          </Fade>
+        </Stack>
       </BaseLayout>
     </>
   );
@@ -137,7 +131,7 @@ const SectionCard = ({ name, href }: { name: string; href: string }) => {
       <Card
         sx={{
           backgroundColor: 'rgba(255, 255, 255, 0.025)',
-          borderRadius: 3,
+          borderRadius: 3, // TODO: Change to 0
           width: '100%',
           backdropFilter: blurEffect,
           backgroundBlendMode: 'overlay',

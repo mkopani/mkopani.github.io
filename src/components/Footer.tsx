@@ -8,6 +8,7 @@ const Footer = () => {
       component="footer"
       sx={{
         width: '100vw',
+        height: '5em',
         position: 'fixed',
         bottom: 0,
         display: 'flex',

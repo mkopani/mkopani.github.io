@@ -27,7 +27,7 @@ let theme = createTheme({
       default: primaryGradient,
     },
     text: {
-      primary: LIGHTEST_COLOR,
+      primary: 'rgba(255, 255, 255, 0.85)',
     },
   },
 
@@ -53,7 +53,10 @@ let theme = createTheme({
 
 theme = createTheme(theme, {
   typography: {
-    h1: {
+    root: {
+      color: theme.palette.text.primary,
+    },
+    title: {
       fontSize: 150,
       fontFamily: 'BebasNeue',
       lineHeight: 1,
@@ -62,14 +65,6 @@ theme = createTheme(theme, {
       [theme.breakpoints.down('sm')]: {
         fontSize: 130,
       },
-    },
-    h2: {
-      fontFamily: 'ChakraPetch',
-      color: theme.palette.text.primary,
-    },
-    h3: {
-      fontFamily: 'ChakraPetch',
-      color: theme.palette.text.primary,
     },
   },
 });
