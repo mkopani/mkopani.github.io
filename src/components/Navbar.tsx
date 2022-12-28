@@ -1,6 +1,6 @@
-import { forwardRef, Ref } from "react";
+import { forwardRef, Ref } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
-import { Zoom } from "@mui/material";
+import { Zoom } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -8,9 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Link from 'next/link';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import sitemap, { HOME_PAGE } from "@/sitemap";
+import sitemap, { HOME_PAGE } from '@/sitemap';
 
 const Navbar = forwardRef((_: unknown, ref: Ref<HTMLDivElement>) => {
   const { pathname } = useRouter();
@@ -33,7 +33,7 @@ const Navbar = forwardRef((_: unknown, ref: Ref<HTMLDivElement>) => {
           <div>
             <Zoom in={!isHomePage}>
               <Link href="/" passHref>
-                <IconButton sx={{ borderRadius: 0 }}>
+                <IconButton sx={{ borderRadius: 1.5 }}>
                   <HomeIcon />
                 </IconButton>
               </Link>
@@ -65,8 +65,6 @@ type NavLinkProps = {
 
 const NavLink = ({ href, name }: NavLinkProps) => (
   <Link href={href} passHref style={{ textDecoration: 'none' }}>
-    <Button variant="text">
-      {name}
-    </Button>
+    <Button variant="text">{name}</Button>
   </Link>
 );

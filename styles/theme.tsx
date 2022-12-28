@@ -2,7 +2,9 @@ import { deepOrange, lightBlue } from '@mui/material/colors';
 import { createTheme, responsiveFontSizes, Shadows } from '@mui/material/styles';
 
 export const primaryGradient =
-  'background-image: linear-gradient(to bottom, #002949, #033961, #054a79, #085c93, #086ead, #3972bd, #5d74cb, #8175d4, #bb5dbd, #e24093, #f1335c, #e64a19)';
+  'linear-gradient(to bottom, #002949, #033961, #054a79, #085c93, #086ead, #3972bd, #5d74cb, #8175d4, #bb5dbd, #e24093, #f1335c, #e64a19)';
+export const darkerGradient =
+  'linear-gradient(to bottom, #002949, #003158, #003a67, #004276, #004b86, #304e93, #514f9e, #714ea4, #a73d96, #cf2978, #e52a4f, #e64a19)';
 
 export const LIGHTEST_COLOR = lightBlue[50];
 
@@ -24,7 +26,7 @@ let theme = createTheme({
       main: deepOrange[100],
     },
     background: {
-      default: primaryGradient,
+      default: darkerGradient,
     },
     text: {
       primary: 'rgba(255, 255, 255, 0.85)',
@@ -39,8 +41,15 @@ let theme = createTheme({
       },
       styleOverrides: {
         root: {
-          borderRadius: 0,
           textTransform: 'unset',
+        },
+        contained: {
+          backgroundColor: 'rgba(255, 255, 255, 0.3)',
+          color: 'white',
+          '&:hover': {
+            color: DARKEST_COLOR,
+            backgroundColor: 'rgba(255, 255, 255, 0.6)'
+          },
         },
       },
     },

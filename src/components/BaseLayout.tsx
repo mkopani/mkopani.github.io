@@ -1,6 +1,7 @@
 import { useRef } from 'react';
-import Box, { BoxProps } from '@mui/material/Box';
+import { SxProps } from '@mui/material';
 import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 
 import useWindowSize from '@/hooks/useWindowSize';
 
@@ -9,40 +10,41 @@ import Navbar from './Navbar';
 
 const BaseLayout = ({
   children,
-  display = 'flex',
   noTopPadding = false,
-  ...other
-}: BoxProps & { noTopPadding?: boolean }) => {
+  ContainerSx = {},
+}: {
+  children: React.ReactNode;
+  noTopPadding?: boolean;
+  ContainerSx?: SxProps;
+}) => {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const footerHeight = footerRef.current?.clientHeight || 0;
   const navbarRef = useRef<HTMLDivElement>(null);
   const navbarHeight = navbarRef.current?.clientHeight || 0;
   const { height: windowHeight = 1000 } = useWindowSize();
 
-  const layoutHeight = windowHeight - navbarHeight;
+  const layoutHeight = windowHeight - footerHeight;
 
   return (
-    <Box
-      id="layout-container"
-      display={display}
-      minHeight={windowHeight}
-      {...other}
-    >
-      <Box>
-        <Navbar ref={navbarRef} />
-      </Box>
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        <Box
-          minHeight={layoutHeight}
-          maxHeight="100vh"
-          pt={noTopPadding ? undefined : `${navbarHeight}px`}
-          sx={{ justifyContent: 'center' }}
+    <>
+      <Navbar ref={navbarRef} />
+      <Stack
+        direction="column"
+        sx={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Container
+          maxWidth="lg"
+          sx={{
+            pt: noTopPadding ? undefined : `${navbarHeight}px`,
+            minHeight: layoutHeight,
+            ...ContainerSx,
+          }}
         >
-          <Container maxWidth="lg">
-            {children}
-          </Container>
-        </Box>
-      </Box>
-      <Footer />
-    </Box>
+          <main>{children}</main>
+        </Container>
+        <Footer ref={footerRef} />
+      </Stack>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ export const HOME_PAGE = '/';
 
 const sitemap = {
   '/projects': 'Projects',
-  '/about': 'More About Me',
+  '/about': 'About Me',
 };
 
 export default sitemap;

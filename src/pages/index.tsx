@@ -1,4 +1,4 @@
-import { forwardRef, Ref, useRef } from 'react';
+import { forwardRef, Ref } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -13,6 +13,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import BaseLayout from '@/components/BaseLayout';
+import useWindowSize from '@/hooks/useWindowSize';
 import sitemap from '@/sitemap';
 
 type AnimationComponent = 'title' | 'subtitle' | 'menu';
@@ -52,20 +53,14 @@ export default function Home() {
       </Head> */}
       <BaseLayout
         noTopPadding
-        sx={{
+        ContainerSx={{
           justifyContent: 'center',
           alignItems: 'center',
+          display: 'flex',
         }}
       >
-        <Stack
-          spacing={3}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignSelf: 'center',
-            height: '100vh',
-          }}
-        >
+        <Stack spacing={3}>
+          {/* Hero section */}
           <Stack
             spacing={1}
             sx={{
@@ -104,15 +99,12 @@ export default function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 alignSelf: 'center',
-                width: { xs: '100%', md: '65%' }
+                width: { xs: '100%', md: '65%' },
               }}
             >
               {Object.entries(sitemap).map(([route, name]) => (
                 <Box key={route} width="100%">
-                  <SectionCard
-                    name={name}
-                    href={route}
-                  />
+                  <SectionCard name={name} href={route} />
                 </Box>
               ))}
             </Stack>
@@ -123,44 +115,40 @@ export default function Home() {
   );
 }
 
-const SectionCard = ({ name, href }: { name: string; href: string }) => {
-  const blurEffect = 'blur(8px)';
-
-  return (
-    <Link href={href} passHref style={{ textDecoration: 'none' }}>
-      <Card
-        sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.025)',
-          borderRadius: 3, // TODO: Change to 0
-          width: '100%',
-          backdropFilter: blurEffect,
-          backgroundBlendMode: 'overlay',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          transition: '0.3s',
-          '&:hover': {
-            transform: 'scale(1.05)'
-          },
-        }}
-      >
-        <CardActionArea disableRipple disableTouchRipple>
-          <CardContent
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Typography variant="h5" sx={{ fontWeight: 400 }}>
-              {name}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Link>
-  );
-};
+const SectionCard = ({ name, href }: { name: string; href: string }) => (
+  <Link href={href} passHref style={{ textDecoration: 'none' }}>
+    <Card
+      sx={{
+        backgroundColor: 'rgba(255, 255, 255, 0.025)',
+        borderRadius: 3, // TODO: Change to 0
+        width: '100%',
+        backdropFilter: 'blur(8px)',
+        backgroundBlendMode: 'overlay',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        transition: '0.3s',
+        '&:hover': {
+          transform: 'scale(1.05)'
+        },
+      }}
+    >
+      <CardActionArea disableRipple disableTouchRipple>
+        <CardContent
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="h5" sx={{ fontWeight: 400 }}>
+            {name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  </Link>
+);
 
 const CustomFade = forwardRef(
   (props: FadeProps, ref: Ref<HTMLDivElement>) => (

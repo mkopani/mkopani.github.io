@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document';
 
 import { DARKEST_COLOR } from '@/styles/theme';
 
-type CustomFontFamily = 'BebasNeue' | 'ChakraPetch';
+type CustomFontFamily = 'BebasNeue' | 'ChakraPetch' | 'HankenGrotesk';
 
 type FontLinkProps = {
   fontFamily: CustomFontFamily;
@@ -33,6 +33,13 @@ export default function Document() {
 
         {/* Import Bebas Neue font */}
         <FontLink fontFamily="BebasNeue" variant="Regular" extension="ttf" />
+
+        {/* Import Hanken Grotesk font */}
+        <FontLink
+          fontFamily="HankenGrotesk"
+          variant="Regular"
+          extension="ttf"
+        />
 
         {/* Import Chakra Petch font */}
         <FontLink fontFamily="ChakraPetch" variant="Bold" extension="ttf" />
