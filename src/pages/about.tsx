@@ -7,6 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import Image from 'next/image';
 
 import BaseLayout from '@/components/BaseLayout';
 
@@ -22,12 +23,54 @@ const links: LinkType[] = [
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
 ];
 
+type TechStackProps = {
+  title: string;
+  items: string[];
+};
+
+const stacks: TechStackProps[] = [
+  {
+    title: 'Client-side',
+    items: [
+      'React',
+      'Next.js',
+      'Web3.js',
+      'Redux',
+      'CSS/Sass',
+      'Material UI',
+      'Bootstrap',
+    ],
+  },
+  {
+    title: 'Server-side',
+    items: [
+      'Python',
+      'Node.js',
+      'Django',
+      'NumPy & Pandas',
+      'Ruby on Rails',
+      'Rust',
+      'Solidity',
+    ],
+  },
+  {
+    title: 'Utilities',
+    items: [
+      'AWS (Lambda, EC2, RDS, S3, etc.)',
+      'Git',
+      'PostgreSQL',
+      'MongoDB',
+      'Infura',
+    ],
+  },
+];
+
 export default function About() {
   const renderParagraphs = () => (
     <Stack
       spacing={2}
       sx={{
-        width: { xs: '100%', md: '50%' },
+        width: '100%',
         display: 'flex',
         justifyContent: 'start',
         alignItems: 'start',
@@ -66,45 +109,65 @@ export default function About() {
     <Stack
       spacing={2}
       direction={{ xs: 'column', sm: 'row' }}
-      sx={{
-        width: { xs: '100%', md: '50%' },
-        mb: 2,
-      }}
+      sx={{ width: '100%', mb: 2 }}
     >
-      <TechStackSection
-        title="Client-side"
-        items={[
-          'React',
-          'Next.js',
-          'Web3.js',
-          'Redux',
-          'CSS/Sass',
-          'Material UI',
-          'Bootstrap',
-        ]}
-      />
-      <TechStackSection
-        title="Server-side"
-        items={[
-          'Python',
-          'Node.js',
-          'Django',
-          'NumPy & Pandas',
-          'Ruby on Rails',
-          'Rust',
-          'Solidity',
-        ]}
-      />
-      <TechStackSection
-        title="Utilities"
-        items={[
-          'AWS (Lambda, EC2, RDS, S3, etc.)',
-          'Git',
-          'PostgreSQL',
-          'MongoDB',
-          'Infura',
-        ]}
-      />
+      {stacks.map((stack, index) => (
+        <TechStackSection key={index} {...stack} />
+      ))}
+    </Stack>
+  );
+
+  const renderPhotoAndLinks = () => (
+    <Stack alignItems="center" width="100%">
+      {/* Photo */}
+      <Box
+        component="div"
+        sx={{
+          width: '100%',
+          height: '15em',
+          position: 'relative',
+          mb: 2,
+          borderStyle: 'solid',
+          borderWidth: 5,
+          borderRadius: 3,
+          borderColor: 'rgba(255, 255, 255, 0.1)',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          alt="A picture of me on Long Beach in British Columbia."
+          src="/website_headshot.png"
+          quality={100}
+          fill
+          style={{
+            objectFit: 'cover',
+            userSelect: 'none',
+          }}
+        />
+      </Box>
+      {/* Links */}
+      <Stack
+        spacing={1}
+        direction={{ xs: 'row', md: 'column', lg: 'row' }}
+        width="100%"
+        display="flex"
+        alignItems="center"
+      >
+        {links.map(({ href, name }, index, array) => (
+          <Box key={index} width={{ xs: '100%', lg: `${100 / array.length}%` }}>
+            <Button
+              href={href}
+              fullWidth
+              sx={{
+                backdropFilter: 'blur(8px)',
+                backgroundBlendMode: 'overlay',
+              }}
+            >
+              {name}
+            </Button>
+          </Box>
+        ))}
+      </Stack>
     </Stack>
   );
 
@@ -112,34 +175,29 @@ export default function About() {
     <>
       {/* TODO: Add Head with metatags */}
       <BaseLayout>
-        <Stack spacing={5} sx={{ alignItems: 'center', px: { xs: 2, lg: 0 } }}>
+        <Stack spacing={3} sx={{ alignItems: 'center', px: { xs: 2, lg: 0 } }}>
           <Stack alignItems="center">
             <Typography variant="h1" component="div" gutterBottom>
               About Me
             </Typography>
-            {/* Links */}
-            <Stack spacing={1} direction="row">
-              {links.map(({ href, name }, index, array) => (
-                <Box
-                  key={index}
-                  width={{ xs: '100%', sm: `${100 / array.length}%` }}
-                >
-                  <Button
-                    href={href}
-                    fullWidth
-                    sx={{
-                      backdropFilter: 'blur(8px)',
-                      backgroundBlendMode: 'overlay',
-                    }}
-                  >
-                    {name}
-                  </Button>
-                </Box>
-              ))}
-            </Stack>
+            <Box display={{ xs: 'inherit', md: 'none' }}>
+              {renderPhotoAndLinks()}
+            </Box>
           </Stack>
           <Stack spacing={3.5} direction={{ xs: 'column', md: 'row' }}>
-            {renderParagraphs()}
+            <Stack width={{ xs: '100%', md: '60%' }}>
+              {renderParagraphs()}
+            </Stack>
+            <Stack width={{ xs: '100%', md: '40%' }}>
+              <Box display={{ xs: 'none', md: 'inherit' }}>
+                {renderPhotoAndLinks()}
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack width="100%">
+            <Typography variant="h4" gutterBottom>
+              Across the Stack
+            </Typography>
             {renderTechStack()}
           </Stack>
         </Stack>
@@ -150,13 +208,7 @@ export default function About() {
 
 const Paragraph = (props: TypographyProps) => <Typography {...props} />;
 
-const TechStackSection = ({
-  title,
-  items,
-}: {
-  title: string;
-  items: string[];
-}) => {
+const TechStackSection = ({ title, items }: TechStackProps) => {
   return (
     <Card
       elevation={0}
@@ -189,3 +241,5 @@ const TechStackSection = ({
     </Card>
   );
 };
+
+TechStackSection.displayName = 'TechStackSection';
