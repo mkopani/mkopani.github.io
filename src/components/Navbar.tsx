@@ -21,11 +21,15 @@ const Navbar = forwardRef((_: unknown, ref: Ref<HTMLDivElement>) => {
       ref={ref}
       elevation={0}
       position="fixed"
+      color="transparent"
       sx={{
         width: '100%',
         alignItems: 'center',
-        backgroundColor: 'transparent',
+        backdropFilter: 'blur(8px)',
         zIndex: 1000,
+        '&:-webkit-scrollbar': {
+          overflow: 'visible',
+        },
       }}
     >
       <Container sx={{ py: 2 }} maxWidth="xl">
