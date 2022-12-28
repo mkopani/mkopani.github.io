@@ -44,11 +44,11 @@ let theme = createTheme({
           textTransform: 'unset',
         },
         contained: {
-          backgroundColor: 'rgba(255, 255, 255, 0.3)',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
           color: 'white',
           '&:hover': {
-            color: DARKEST_COLOR,
-            backgroundColor: 'rgba(255, 255, 255, 0.6)'
+            // color: DARKEST_COLOR,
+            backgroundColor: 'rgba(255, 255, 255, 0.3)'
           },
         },
       },
