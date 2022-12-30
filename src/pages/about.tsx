@@ -10,6 +10,7 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 import Image from 'next/image';
 
 import BaseLayout from '@/components/BaseLayout';
+import { BUTTON_COLOR } from '@/styles/theme';
 
 type LinkType = {
   href: string;
@@ -130,7 +131,7 @@ export default function About() {
           borderStyle: 'solid',
           borderWidth: 5,
           borderRadius: 3,
-          borderColor: 'rgba(255, 255, 255, 0.1)',
+          borderColor: BUTTON_COLOR,
           overflow: 'hidden',
         }}
       >
@@ -213,13 +214,13 @@ const TechStackSection = ({ title, items }: TechStackProps) => {
     <Card
       elevation={0}
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: BUTTON_COLOR,
         width: { xs: '100%', sm: `${(1 / 3) * 100}%` },
         height: 'max-content',
       }}
     >
       <List sx={{ p: 0 }}>
-        <ListItem sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+        <ListItem sx={{ backgroundColor: BUTTON_COLOR }}>
           <ListItemText
             primary={title}
             primaryTypographyProps={{ fontWeight: 'bold' }}

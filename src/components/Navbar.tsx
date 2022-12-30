@@ -25,14 +25,11 @@ const Navbar = forwardRef((_: unknown, ref: Ref<HTMLDivElement>) => {
       sx={{
         width: '100%',
         alignItems: 'center',
-        backdropFilter: 'blur(8px)',
         zIndex: 1000,
-        '&:-webkit-scrollbar': {
-          overflow: 'visible',
-        },
+        backdropFilter: isHomePage ? undefined : 'blur(8px)',
       }}
     >
-      <Container sx={{ py: 2 }} maxWidth="xl">
+      <Container sx={{ py: { xs: 1, sm: 2 } }} maxWidth="xl">
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
             <Zoom in={!isHomePage}>

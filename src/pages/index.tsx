@@ -15,6 +15,7 @@ import Link from 'next/link';
 import BaseLayout from '@/components/BaseLayout';
 import useWindowSize from '@/hooks/useWindowSize';
 import sitemap from '@/sitemap';
+import { makeOpaqueWhite } from '@/styles/theme';
 
 type AnimationComponent = 'title' | 'subtitle' | 'menu';
 
@@ -59,12 +60,12 @@ export default function Home() {
           display: 'flex',
         }}
       >
-        <Stack spacing={3}>
+        <Stack spacing={{ xs: 1.5, sm: 3 }}>
           {/* Hero section */}
           <Stack
             spacing={1}
             sx={{
-              mb: 5,
+              mb: { xs: 2, sm: 5 },
               display: 'flex',
               justifyContent: 'center',
               alignSelf: 'center',
@@ -119,7 +120,7 @@ const SectionCard = ({ name, href }: { name: string; href: string }) => (
   <Link href={href} passHref style={{ textDecoration: 'none' }}>
     <Card
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.025)',
+        backgroundColor: makeOpaqueWhite(0.025),
         borderRadius: 3, // TODO: Change to 0
         width: '100%',
         backdropFilter: 'blur(8px)',
