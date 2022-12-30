@@ -149,10 +149,13 @@ export default function About() {
       {/* Links */}
       <Stack
         spacing={1}
-        direction={{ xs: 'row', md: 'column', lg: 'row' }}
-        width="100%"
-        display="flex"
-        alignItems="center"
+        direction={{ xs: 'column', sm: 'row', md: 'column', lg: 'row' }}
+        sx={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
       >
         {links.map(({ href, name }, index, array) => (
           <Box key={index} width={{ xs: '100%', lg: `${100 / array.length}%` }}>
@@ -177,11 +180,17 @@ export default function About() {
       {/* TODO: Add Head with metatags */}
       <BaseLayout>
         <Stack spacing={3} sx={{ alignItems: 'center', px: { xs: 2, lg: 0 } }}>
-          <Stack alignItems="center">
+          <Stack alignItems="center" width="100%">
             <Typography variant="h1" component="div" gutterBottom>
               About Me
             </Typography>
-            <Box display={{ xs: 'inherit', md: 'none' }}>
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                justifyContent: 'center',
+                width: { xs: '100%', sm: 'max-content' },
+              }}
+            >
               {renderPhotoAndLinks()}
             </Box>
           </Stack>
@@ -189,11 +198,14 @@ export default function About() {
             <Stack width={{ xs: '100%', md: '60%' }}>
               {renderParagraphs()}
             </Stack>
-            <Stack width={{ xs: '100%', md: '40%' }}>
-              <Box display={{ xs: 'none', md: 'inherit' }}>
-                {renderPhotoAndLinks()}
-              </Box>
-            </Stack>
+            <Box
+              sx={{
+                width: '40%',
+                display: { xs: 'none', md: 'inherit' },
+              }}
+            >
+              {renderPhotoAndLinks()}
+            </Box>
           </Stack>
           <Stack width="100%">
             <Typography variant="h4" gutterBottom>
