@@ -18,7 +18,7 @@ type LinkType = {
 };
 
 const links: LinkType[] = [
-  { href: '/', name: 'Resume' }, // TODO
+  { href: '/mkopani_resume.pdf', name: 'Resume' }, // TODO
   { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
   { href: 'https://github.com/mkopani', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
@@ -161,6 +161,7 @@ export default function About() {
           <Box key={index} width={{ xs: '100%', lg: `${100 / array.length}%` }}>
             <Button
               href={href}
+              target="_blank"
               fullWidth
               sx={{
                 backdropFilter: 'blur(8px)',
