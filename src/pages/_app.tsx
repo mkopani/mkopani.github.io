@@ -12,8 +12,8 @@ export const DEFAULT_TITLE = 'Mark Kopani | Full-Stack Web3 Developer';
 export const SEO_IMAGES = [
   {
     url: '/images/seo_thumbnail.png',
-    width: 3046,
-    height: 1938,
+    width: 1200,
+    height: 643,
     alt: DEFAULT_TITLE,
   },
 ];

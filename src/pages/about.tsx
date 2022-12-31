@@ -1,10 +1,6 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
 import Link from '@mui/material/Link';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Head from 'next/head';
@@ -12,6 +8,7 @@ import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
+import TechStackDisplay from '@/components/TechStackDisplay';
 import { BUTTON_COLOR } from '@/styles/theme';
 
 import { DEFAULT_TITLE } from './_app';
@@ -28,48 +25,6 @@ const links: LinkType[] = [
   { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
   { href: 'https://github.com/mkopani', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
-];
-
-type TechStackProps = {
-  title: string;
-  items: string[];
-};
-
-const stacks: TechStackProps[] = [
-  {
-    title: 'Client-side',
-    items: [
-      'React',
-      'Next.js',
-      'Web3.js',
-      'Redux',
-      'CSS/Sass',
-      'Material UI',
-      'Bootstrap',
-    ],
-  },
-  {
-    title: 'Server-side',
-    items: [
-      'Python',
-      'Node.js',
-      'Django',
-      'NumPy & Pandas',
-      'Ruby on Rails',
-      'Rust',
-      'Solidity',
-    ],
-  },
-  {
-    title: 'Utilities',
-    items: [
-      'AWS (Lambda, EC2, RDS, S3, etc.)',
-      'Git',
-      'PostgreSQL',
-      'MongoDB',
-      'Infura',
-    ],
-  },
 ];
 
 export default function About() {
@@ -109,18 +64,6 @@ export default function About() {
         with many different languages and frameworks. No matter what the stack,
         I’m able to adjust in virtually no time.
       </Paragraph>
-    </Stack>
-  );
-
-  const renderTechStack = () => (
-    <Stack
-      spacing={2}
-      direction={{ xs: 'column', sm: 'row' }}
-      sx={{ width: '100%', mb: 2 }}
-    >
-      {stacks.map((stack, index) => (
-        <TechStackSection key={index} {...stack} />
-      ))}
     </Stack>
   );
 
@@ -221,7 +164,7 @@ export default function About() {
             <Typography variant="h4" gutterBottom>
               Across the Stack
             </Typography>
-            {renderTechStack()}
+            <TechStackDisplay />
           </Stack>
         </Stack>
       </BaseLayout>
@@ -231,38 +174,3 @@ export default function About() {
 
 const Paragraph = (props: TypographyProps) => <Typography {...props} />;
 
-const TechStackSection = ({ title, items }: TechStackProps) => {
-  return (
-    <Card
-      elevation={0}
-      sx={{
-        backgroundColor: BUTTON_COLOR,
-        width: { xs: '100%', sm: `${(1 / 3) * 100}%` },
-        height: 'max-content',
-      }}
-    >
-      <List sx={{ p: 0 }}>
-        <ListItem sx={{ backgroundColor: BUTTON_COLOR }}>
-          <ListItemText
-            primary={title}
-            primaryTypographyProps={{ fontWeight: 'bold' }}
-          />
-        </ListItem>
-        {items.map((item, index, array) => (
-          <ListItem
-            key={index}
-            sx={{
-              // No vertical padding for all items except first and last
-              pt: index > 0 ? 0 : undefined,
-              pb: index < array.length - 1 ? 0 : undefined,
-            }}
-          >
-            <ListItemText primary={`${item}`} />
-          </ListItem>
-        ))}
-      </List>
-    </Card>
-  );
-};
-
-TechStackSection.displayName = 'TechStackSection';

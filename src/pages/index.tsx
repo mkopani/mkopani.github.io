@@ -13,12 +13,13 @@ import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
+import TechStackDisplay from '@/components/TechStackDisplay';
 import sitemap from '@/sitemap';
 import { makeOpaqueWhite } from '@/styles/theme';
 
 import { DEFAULT_TITLE, SEO_IMAGES, SEO_TWITTER } from './_app';
 
-type AnimationComponent = 'title' | 'subtitle' | 'menu';
+type AnimationComponent = 'title' | 'subtitle' | 'menu' | 'stack';
 
 type AnimationSpecObject = {
   [key in AnimationComponent]: number;
@@ -28,12 +29,14 @@ const animationDelays: AnimationSpecObject = {
   title: 0,
   subtitle: 300,
   menu: 500,
+  stack: 700,
 };
 
 const animationDurations: AnimationSpecObject = {
   title: 750,
   subtitle: 600,
   menu: 500,
+  stack: 1000,
 }
 
 const makeTransitionProps = (
@@ -56,19 +59,17 @@ export default function Home() {
         twitter={SEO_TWITTER}
       />
       <BaseLayout
-        noTopPadding
         ContainerSx={{
           justifyContent: 'center',
           alignItems: 'center',
           display: 'flex',
         }}
       >
-        <Stack spacing={{ xs: 1.5, sm: 3 }}>
+        <Stack spacing={{ xs: 3, sm: 5.5 }}>
           {/* Hero section */}
           <Stack
             spacing={1}
             sx={{
-              mb: { xs: 2, sm: 5 },
               display: 'flex',
               justifyContent: 'center',
               alignSelf: 'center',
@@ -111,6 +112,11 @@ export default function Home() {
                   <SectionCard name={name} href={route} />
                 </Box>
               ))}
+            </Stack>
+          </Fade>
+          <Fade {...makeTransitionProps('stack')}>
+            <Stack width="100%">
+              <TechStackDisplay />
             </Stack>
           </Fade>
         </Stack>
