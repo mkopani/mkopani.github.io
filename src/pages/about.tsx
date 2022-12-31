@@ -18,7 +18,7 @@ type LinkType = {
 };
 
 const links: LinkType[] = [
-  { href: '/mkopani_resume.pdf', name: 'Resume' }, // TODO
+  { href: '/resume.pdf', name: 'Resume' },
   { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
   { href: 'https://github.com/mkopani', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
