@@ -24,7 +24,7 @@ const Footer = forwardRef((_: unknown, ref: Ref<HTMLDivElement>) => {
       }}
     >
       <Typography variant="body2">
-        Designed and Built by Mark Kopani &copy; {new Date().getFullYear()}
+        Designed and built by Mark Kopani &copy; {new Date().getFullYear()}
       </Typography>
       <Separator />
       <Link href="https://github.com/mkopani">
