@@ -9,9 +9,15 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
+import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
 import { BUTTON_COLOR, BUTTON_HOVER_COLOR } from '@/styles/theme';
+
+import { DEFAULT_TITLE } from './_app';
+
+const TITLE = `Projects | ${DEFAULT_TITLE}`;
 
 const gridSpacing = { xs: 1.5, md: 2 };
 
@@ -55,7 +61,10 @@ const projects: ProjectProps[] = [
 export default function Projects() {
   return (
     <>
-      {/* TODO: Add Head with metatags */}
+      <Head>
+        <title>{TITLE}</title>
+      </Head>
+      <NextSeo title={TITLE} />
       <BaseLayout>
         <Stack
           spacing={5}

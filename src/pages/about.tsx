@@ -7,10 +7,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
+import Head from 'next/head';
 import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
 import { BUTTON_COLOR } from '@/styles/theme';
+
+import { DEFAULT_TITLE } from './_app';
+
+const TITLE = `About | ${DEFAULT_TITLE}`;
 
 type LinkType = {
   href: string;
@@ -137,7 +143,7 @@ export default function About() {
       >
         <Image
           alt="A picture of me on Long Beach in British Columbia."
-          src="/website_headshot.png"
+          src="/images/website_headshot.png"
           quality={100}
           fill
           style={{
@@ -178,7 +184,10 @@ export default function About() {
 
   return (
     <>
-      {/* TODO: Add Head with metatags */}
+      <Head>
+        <title>{TITLE}</title>
+      </Head>
+      <NextSeo title={TITLE} />
       <BaseLayout>
         <Stack spacing={3} sx={{ alignItems: 'center', px: { xs: 2, lg: 0 } }}>
           <Stack alignItems="center" width="100%">
