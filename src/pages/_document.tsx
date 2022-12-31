@@ -29,6 +29,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="theme-color" content={DARKEST_COLOR} />
+        <link rel="shortcut icon" href="/favicon.png" />
+
         {/* TODO: Add favicon */}
 
         {/* Import Bebas Neue font */}
