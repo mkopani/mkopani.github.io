@@ -12,7 +12,7 @@ import Gallery, { PhotoClickHandler } from 'react-photo-gallery-next';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography, { TypographyProps } from '@mui/material/Typography';
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 
@@ -109,7 +109,14 @@ const ProjectDisplay: NextPage<ProjectDisplayProps> = ({
 
 export default ProjectDisplay;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+const makeStaticPath = (id: string) => ({ params: { id } });
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: Object.keys(projects).map((id) => makeStaticPath(id)),
+  fallback: false,
+});
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id;
   if (!id || Array.isArray(id)) {
     return { notFound: true };
