@@ -137,7 +137,7 @@ const ProjectCard = ({
         >
           <CardContent sx={{ p: 'unset' }}>
             <CardMedia
-              image={`/projects/${id}.png`}
+              image={`/images/projects/${id}.png`}
               component="img"
               height="200"
               sx={{ backgroundPosition: 'center' }}

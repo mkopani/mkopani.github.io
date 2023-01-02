@@ -8,17 +8,21 @@ import useWindowSize from '@/hooks/useWindowSize';
 import Footer from './Footer';
 import Navbar from './Navbar';
 
+export type BaseLayoutProps = {
+  children: React.ReactNode;
+  noTopPadding?: boolean;
+  backButton?: boolean;
+  title?: React.ReactNode;
+  ContainerSx?: SxProps;
+};
+
 const BaseLayout = ({
   children,
   noTopPadding = false,
+  backButton = false,
   title,
   ContainerSx = {},
-}: {
-  children: React.ReactNode;
-  noTopPadding?: boolean;
-  title?: React.ReactNode;
-  ContainerSx?: SxProps;
-}) => {
+}: BaseLayoutProps) => {
   const footerRef = useRef<HTMLDivElement>(null);
   const footerHeight = footerRef.current?.clientHeight || 0;
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -29,7 +33,7 @@ const BaseLayout = ({
 
   return (
     <>
-      <Navbar ref={navbarRef} />
+      <Navbar backButton={backButton} ref={navbarRef} />
       <Stack
         direction="column"
         sx={{ display: 'flex', justifyContent: 'space-between' }}
