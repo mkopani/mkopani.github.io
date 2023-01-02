@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Box,
   Card,
@@ -15,48 +14,65 @@ import { NextSeo } from 'next-seo';
 import BaseLayout from '@/components/BaseLayout';
 import { BUTTON_COLOR, BUTTON_HOVER_COLOR } from '@/styles/theme';
 
-import { DEFAULT_TITLE } from './_app';
+import { DEFAULT_TITLE } from '../_app';
 
-const TITLE = `Projects | ${DEFAULT_TITLE}`;
+const TITLE = `Projects - ${DEFAULT_TITLE}`;
 
 const gridSpacing = { xs: 1.5, md: 2 };
 
-type ProjectProps = {
+interface Project {
   name: string;
-  image: string;
-  url: string;
+  url?: string;
   affiliation?: string;
   description: string;
-};
+}
 
-const projects: ProjectProps[] = [
-  {
+interface ProjectProps extends Project {
+  id: string;
+}
+
+const projects: { [key: string]: Project } = {
+  weebox: {
     name: 'Weebox',
-    image: '/projects/weebox.png',
     url: 'https://weebox.io',
     affiliation: 'Shape Immersive',
     description: "A public release page for a client's NFT collection.",
   },
-  {
+  safer: {
+    name: 'Safer',
+    affiliation: 'Answer Intelligence',
+    description: 'Web3 wallet prototype focused on UX and security.',
+  },
+  f3stival: {
+    name: 'F3STIVAL',
+    affiliation: 'Shape Immersive',
+    description: 'Bulk ERC-1155 minting and Node bulk transfer script.',
+  },
+  arc: {
+    name: 'Arc',
+    affiliation: 'Shape Immersive',
+    description: 'A white-label NFT store and marketplace.',
+  },
+  'floor-trader': {
+    name: 'FloorTrader',
+    description: 'An API wrapper for Interactive Brokers.',
+  },
+  'format-as-you-type': {
     name: 'Format As You Type',
     url: 'https://github.com/mkopani/format-as-you-type',
-    image: '/projects/format-as-you-type.png',
-    description:
-      'React input field formatter for any input component.',
+    description: 'React input field formatter for any input component.',
   },
-  {
+  bayshore: {
     name: 'Bayshore Easy Drive',
     url: 'https://bayshoreeasydrive.com/',
-    image: '/projects/bayshore.png',
     description: 'Lightweight rental car reservation system and CRM.',
   },
-  {
+  pppine: {
     name: 'Pine Python Package',
     url: 'https://pypi.org/project/pppine/',
-    image: '/projects/pppine.png',
     description: 'Miscellaneous Python and Django helper functions.',
   },
-];
+};
 
 export default function Projects() {
   return (
@@ -87,11 +103,10 @@ export default function Projects() {
               mr: 'auto',
             }}
           >
-            {projects.map((project, index) => (
-              <ProjectCard {...project} key={index} />
+            {Object.entries(projects).map(([id, project], index) => (
+              <ProjectCard id={id} {...project} key={index} />
             ))}
           </Grid>
-          <Box></Box>
         </Stack>
       </BaseLayout>
     </>
@@ -99,10 +114,10 @@ export default function Projects() {
 }
 
 const ProjectCard = ({
+  id,
   name,
-  image = '',
-  affiliation = '',
-  url = '#',
+  affiliation,
+  url,
   description,
 }: ProjectProps) => {
   return (
@@ -116,16 +131,17 @@ const ProjectCard = ({
           },
         }}
       >
-        <CardActionArea href={url} target="_blank">
+        <CardActionArea
+          href={url || `/projects/${id}`}
+          target={url ? '_blank' : undefined}
+        >
           <CardContent sx={{ p: 'unset' }}>
-            {image && (
-              <CardMedia
-                image={image}
-                component="img"
-                height="200"
-                sx={{ backgroundPosition: 'center' }}
-              />
-            )}
+            <CardMedia
+              image={`/projects/${id}.png`}
+              component="img"
+              height="200"
+              sx={{ backgroundPosition: 'center' }}
+            />
             <Box sx={{ p: 1 }}>
               <Stack
                 direction="row"
@@ -135,7 +151,7 @@ const ProjectCard = ({
                 <Typography variant="h5" fontWeight={600}>
                   {name}
                 </Typography>
-                {affiliation && <Typography>(via {affiliation})</Typography>}
+                {affiliation && <Typography>({affiliation})</Typography>}
               </Stack>
               <Typography variant="body2">{description}</Typography>
             </Box>

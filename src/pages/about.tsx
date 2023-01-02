@@ -2,18 +2,19 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
+import ParagraphContainer from '@/components/ParagraphContainer';
 import TechStackDisplay from '@/components/TechStackDisplay';
 import { BUTTON_COLOR } from '@/styles/theme';
 
 import { DEFAULT_TITLE } from './_app';
 
-const TITLE = `About | ${DEFAULT_TITLE}`;
+const TITLE = `About - ${DEFAULT_TITLE}`;
 
 type LinkType = {
   href: string;
@@ -21,7 +22,7 @@ type LinkType = {
 };
 
 const links: LinkType[] = [
-  { href: '/resume.pdf', name: 'Resume' }, 
+  { href: '/resume.pdf', name: 'Resume' },
   { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
   { href: 'https://github.com/mkopani', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
@@ -29,16 +30,7 @@ const links: LinkType[] = [
 
 export default function About() {
   const renderParagraphs = () => (
-    <Stack
-      spacing={2}
-      sx={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'start',
-        alignItems: 'start',
-        textAlign: 'justify',
-      }}
-    >
+    <ParagraphContainer>
       <Typography>
         My name is Mark Kopani and I’m a full stack developer born, raised, and
         based out of Vancouver, BC. I have a diverse background that places me
@@ -64,7 +56,7 @@ export default function About() {
         with many different languages and frameworks. No matter what the stack,
         I’m able to adjust in virtually no time.
       </Typography>
-    </Stack>
+    </ParagraphContainer>
   );
 
   const renderPhotoAndLinks = () => (

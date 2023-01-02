@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { SxProps } from '@mui/material';
+import { SxProps, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 
@@ -11,10 +11,12 @@ import Navbar from './Navbar';
 const BaseLayout = ({
   children,
   noTopPadding = false,
+  title,
   ContainerSx = {},
 }: {
   children: React.ReactNode;
   noTopPadding?: boolean;
+  title?: React.ReactNode;
   ContainerSx?: SxProps;
 }) => {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +42,26 @@ const BaseLayout = ({
             ...ContainerSx,
           }}
         >
-          <main>{children}</main>
+          <main>
+            {title ? (
+              <>
+                <Stack
+                  spacing={5}
+                  sx={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography component="div" variant="h1">
+                    {title}
+                  </Typography>
+                  {children}
+                </Stack>
+              </>
+            ) : (
+              children
+            )}
+          </main>
         </Container>
         <Footer ref={footerRef} />
       </Stack>
