@@ -170,8 +170,8 @@ const projects: { [key: string]: ProjectDisplayProps } = {
   'floor-trader': {
     name: 'FloorTrader',
     description: [
-      'FloorTrader is an API wrapper for Interactive Brokers. It was originally built as part of an automated, algorithmic trading system that I have been building in my spare time over the two years.',
-      'I plan to release this tool to the public before Q3 2023.',
+      'FloorTrader is an API wrapper for Interactive Brokers. It was originally built as part of an automated, algorithmic trading system that I have been working on in my spare time since February 2021.',
+      'I plan to release this tool to the public before Q4 2023.',
     ],
     stack: 'Django REST Framework',
   },

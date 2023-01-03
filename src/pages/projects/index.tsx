@@ -43,15 +43,15 @@ const projects: { [key: string]: Project } = {
     affiliation: 'Answer Intelligence',
     description: 'Web3 wallet prototype focused on UX and security.',
   },
-  f3stival: {
-    name: 'F3STIVAL',
-    affiliation: 'Shape Immersive',
-    description: 'Bulk ERC-1155 minting and Node bulk transfer script.',
-  },
   arc: {
     name: 'Arc',
     affiliation: 'Shape Immersive',
     description: 'A white-label NFT store and marketplace.',
+  },
+  f3stival: {
+    name: 'F3STIVAL',
+    affiliation: 'Shape Immersive',
+    description: 'Bulk ERC-1155 minting and Node bulk transfer script.',
   },
   'floor-trader': {
     name: 'FloorTrader',
