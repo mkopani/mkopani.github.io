@@ -32,14 +32,15 @@ const stacks: TechStackProps[] = [
       'Django',
       'NumPy & Pandas',
       'Ruby on Rails',
-      'Rust',
       'Solidity',
+      'Rust',
     ],
   },
   {
     title: 'Utilities',
     items: [
       'AWS (Lambda, EC2, RDS, S3, etc.)',
+      'Docker',
       'Git',
       'PostgreSQL',
       'MongoDB',
