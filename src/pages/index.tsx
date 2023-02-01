@@ -130,7 +130,7 @@ const SectionCard = ({ name, href }: { name: string; href: string }) => (
     <Card
       sx={{
         backgroundColor: makeOpaqueWhite(0.025),
-        borderRadius: 3, // TODO: Change to 0
+        borderRadius: 3,
         width: '100%',
         backdropFilter: 'blur(8px)',
         backgroundBlendMode: 'overlay',

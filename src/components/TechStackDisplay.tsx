@@ -30,10 +30,10 @@ const stacks: TechStackProps[] = [
       'Python',
       'Node.js',
       'Django',
+      'OpenAI API',
       'NumPy & Pandas',
       'Ruby on Rails',
       'Solidity',
-      'Rust',
     ],
   },
   {
