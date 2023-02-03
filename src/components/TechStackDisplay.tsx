@@ -27,13 +27,13 @@ const stacks: TechStackProps[] = [
   {
     title: 'Server-side',
     items: [
-      'Python',
       'Node.js',
+      'Python',
       'Django',
-      'OpenAI API',
+      'Solidity',
+      'ChatGPT API',
       'NumPy & Pandas',
       'Ruby on Rails',
-      'Solidity',
     ],
   },
   {
