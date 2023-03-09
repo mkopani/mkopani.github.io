@@ -29,7 +29,7 @@ const stacks: TechStackProps[] = [
     items: [
       'Node.js',
       'Python / Django',
-      'ChatGPT API',
+      'OpenAI API',
       'NumPy & Pandas',
       'Scikit-learn',
       'Solidity',
