@@ -15,41 +15,39 @@ const stacks: TechStackProps[] = [
   {
     title: 'Client-side',
     items: [
-      'React',
-      'Next.js',
-      'Web3.js',
+      'React / Next.js',
       'Redux',
-      'CSS/Sass',
       'Material UI',
-      'Bootstrap',
+      'CSS, Sass',
+      'Three.js / BabylonJS',
+      'Web3.js',
     ],
   },
   {
     title: 'Server-side',
     items: [
-      'Node.js',
-      'Python / Django',
-      'OpenAI API',
-      'NumPy & Pandas',
+      'Django, FastAPI, Flask',
+      'Node.js / TypeScript',
+      'LangChain / GPT API',
+      'Stable Diffusion',
+      'NumPy, Pandas',
       'Scikit-learn',
-      'Solidity',
-      'Ruby on Rails',
     ],
   },
   {
     title: 'Utilities',
     items: [
-      'AWS (Lambda, EC2, RDS, S3, etc.)',
+      'AWS',
       'Docker',
-      'Git',
-      'PostgreSQL',
       'MongoDB',
-      'Infura',
+      'MongoDB Atlas',
+      'PostgreSQL',
+      'Postman',
     ],
   },
 ];
 
-const TechStackDisplay = () => (
+const TechStackCards = () => (
   <Stack
     spacing={2}
     direction={{ xs: 'column', sm: 'row' }}
@@ -61,7 +59,7 @@ const TechStackDisplay = () => (
   </Stack>
 );
 
-export default TechStackDisplay;
+export default TechStackCards;
 
 const TechStackSection = ({ title, items }: TechStackProps) => {
   return (

@@ -9,7 +9,7 @@ import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
 import ParagraphContainer from '@/components/ParagraphContainer';
-import TechStackDisplay from '@/components/TechStackDisplay';
+import TechStackCards from '@/components/TechStackCards';
 import { BUTTON_COLOR } from '@/styles/theme';
 
 import { DEFAULT_TITLE } from './_app';
@@ -156,7 +156,7 @@ export default function About() {
             <Typography variant="h4" gutterBottom>
               Across the Stack
             </Typography>
-            <TechStackDisplay />
+            <TechStackCards />
           </Stack>
         </Stack>
       </BaseLayout>

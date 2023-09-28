@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
-import TechStackDisplay from '@/components/TechStackDisplay';
+import TechStackCards from '@/components/TechStackCards';
 import sitemap from '@/sitemap';
 import { makeOpaqueWhite } from '@/styles/theme';
 
@@ -90,7 +90,7 @@ export default function Home() {
                 variant="h3"
                 sx={{ textAlign: 'center' }}
               >
-                Full Stack Web3 Developer
+                Full Stack Generative AI Developer
               </Typography>
             </CustomSlide>
           </Stack>
@@ -116,7 +116,7 @@ export default function Home() {
           </Fade>
           <Fade {...makeTransitionProps('stack')}>
             <Stack width="100%">
-              <TechStackDisplay />
+              <TechStackCards />
             </Stack>
           </Fade>
         </Stack>
