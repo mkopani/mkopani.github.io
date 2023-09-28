@@ -4,23 +4,26 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["next", "prettier"],
   "plugins": ["simple-import-sort"],
   "rules": {
+    "import/prefer-default-export": "off",
+    "no-var": "error",
     "simple-import-sort/imports": [
       "error",
       {
         "groups": [
-          // Side-effect imports
+          // Side effect imports.
           ["^\\u0000"],
-          // Packages
+          // Packages. `react` related packages come first.
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
           ["^react$", "^react", "^@?\\w", "^[^.]"],
           // Absolute imports - ts-alias
           ["(^(@/)(.+))(.*|$)([^\\u0000$])"],
-          // Relative imports
+          // Relative imports.
           ["^\\."],
-          // Type imports
-          ["^[^/\\.].*\u0000$", "/types$", "type$", "^\\..*\u0000$"]
+          // for types imports
+          ["^[^/\\.].*\u0000$", "/types$", "type$", "^\\..*\u0000$"] // types (0 at end)
         ]
       }
     ],

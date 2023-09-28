@@ -1,21 +1,17 @@
 import { forwardRef, Ref } from 'react';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
 import Fade, { FadeProps } from '@mui/material/Fade';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
 import { TransitionProps } from '@mui/material/transitions';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
 
 import BaseLayout from '@/components/BaseLayout';
+import SectionButton from '@/components/SectionButton';
 import TechStackCards from '@/components/TechStackCards';
 import sitemap from '@/sitemap';
-import { makeOpaqueWhite } from '@/styles/theme';
 
 import { DEFAULT_TITLE, SEO_IMAGES, SEO_TWITTER } from './_app';
 
@@ -23,7 +19,7 @@ type AnimationComponent = 'title' | 'subtitle' | 'menu' | 'stack';
 
 type AnimationSpecObject = {
   [key in AnimationComponent]: number;
-}
+};
 
 const animationDelays: AnimationSpecObject = {
   title: 0,
@@ -37,7 +33,7 @@ const animationDurations: AnimationSpecObject = {
   subtitle: 600,
   menu: 500,
   stack: 1000,
-}
+};
 
 const makeTransitionProps = (
   key: keyof typeof animationDelays
@@ -84,7 +80,7 @@ export default function Home() {
                 Mark Kopani
               </Typography>
             </Grow>
-            <CustomSlide component="subtitle">
+            <CustomSlideTransition component="subtitle">
               <Typography
                 component="div"
                 variant="h3"
@@ -92,7 +88,7 @@ export default function Home() {
               >
                 Full Stack Generative AI Developer
               </Typography>
-            </CustomSlide>
+            </CustomSlideTransition>
           </Stack>
           {/* Site options */}
           <Fade {...makeTransitionProps('menu')}>
@@ -109,7 +105,7 @@ export default function Home() {
             >
               {Object.entries(sitemap).map(([route, name]) => (
                 <Box key={route} width="100%">
-                  <SectionCard name={name} href={route} />
+                  <SectionButton name={name} href={route} />
                 </Box>
               ))}
             </Stack>
@@ -125,52 +121,15 @@ export default function Home() {
   );
 }
 
-const SectionCard = ({ name, href }: { name: string; href: string }) => (
-  <Link href={href} passHref style={{ textDecoration: 'none' }}>
-    <Card
-      sx={{
-        backgroundColor: makeOpaqueWhite(0.025),
-        borderRadius: 3,
-        width: '100%',
-        backdropFilter: 'blur(8px)',
-        backgroundBlendMode: 'overlay',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        transition: '0.3s',
-        '&:hover': {
-          transform: 'scale(1.05)'
-        },
-      }}
-    >
-      <CardActionArea disableRipple disableTouchRipple>
-        <CardContent
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Typography variant="h5" sx={{ fontWeight: 400 }}>
-            {name}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  </Link>
-);
-
-const CustomFade = forwardRef(
-  (props: FadeProps, ref: Ref<HTMLDivElement>) => (
-    <div ref={ref}>
-      <Fade {...props} />
-    </div>
-  )
-);
+const CustomFade = forwardRef((props: FadeProps, ref: Ref<HTMLDivElement>) => (
+  <div ref={ref}>
+    <Fade {...props} />
+  </div>
+));
 
 CustomFade.displayName = 'CustomFade';
 
-const CustomSlide = ({
+const CustomSlideTransition = ({
   component,
   children,
 }: {

@@ -1,7 +1,8 @@
 {
-  "cSpell.words": [
-    "Kopani",
-    "Chakra",
-    "Petch"
-  ]
+  "cSpell.words": ["Kopani", "Chakra", "Petch"],
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }
