@@ -38,7 +38,7 @@ const projects: { [key: string]: Project } = {
     description: 'Conversational AI for brands and teams.',
   },
   skybox: {
-    name: 'Alphagen Skybox',
+    name: 'AlphaGen Skybox',
     url: 'https://skybox.alphagen.co/',
     affiliation: 'Shape Immersive',
     description: 'Gen. AI skybox creation for Unreal, Unity, and Blender.',
