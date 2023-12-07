@@ -32,37 +32,46 @@ export default function About() {
   const renderParagraphs = () => (
     <ParagraphContainer>
       <Typography>
-        My name is Mark Kopani and I’m a full stack developer born, raised, and
-        living in Vancouver, BC. I have a diverse background that places me at
-        the intersection of software, data, and finance. While graduating from
-        UBC with a BSc in Statistics and completing the CFA Level I exam in
-        2019, I started my own web development business. I’ve built software
-        solutions from the ground up for several small businesses and startups.
+        My name is Mark Kopani, a full stack developer from Vancouver, BC. Born
+        and raised here, I have a diverse background at the intersection of
+        software, data, and finance. Graduating from UBC with a BSc in
+        Statistics, and having completed the CFA Level I exam in 2019, I
+        uniquely blend analytical and financial insights into my work, when
+        applicable. While graduating, I started my own web development business
+        and built software solutions from the ground up for several small
+        businesses and startups.
       </Typography>
       <Typography>
-        In late 2021, I transitioned to Web3 development and joined{' '}
+        In a pivotal career move in late 2021, I delved into Web3 development.
+        This led me to join{' '}
         <Link href="https://www.shapeimmersive.com/">Shape Immersive</Link> in
-        the new year. Throughout my time at Shape, I’ve had the privilege of
-        working on a variety of Web3 tools and SaaS products.
+        the following year, where {"I've"} been instrumental in developing
+        various Web3 tools and SaaS products.
       </Typography>
       <Typography>
-        My journey in generative AI development began in early 2023 after
-        experiencing the power of ChatGPT. This led me to building one of my
-        favorite projects to date,{' '}
+        My journey in generative AI development began in early 2023, deeply
+        influenced by the transformative capabilities of ChatGPT. This newfound
+        inspiration led to the creation of one of my favorite projects to date,{' '}
         <Link href="https://skybox.alphagen.co/">
           {"AlphaGen's Skybox Generator"}
         </Link>
-        , with more exciting releases on the way.
+        . Building on this momentum, I soon began a contract with{' '}
+        <Link href="https://datastars.ai/">Data Stars</Link>, a Vancouver-based
+        AI startup, furthering my exploration and impact in the field of
+        artificial intelligence.
       </Typography>
       <Typography>
-        {
-          "In my spare time, I've been building an automated, algorithmic trading system with a Django REST Framework API and Next.js frontend. I've also worked on tools and packages for React and Python."
-        }
+        Outside work hours, I have immersed myself in building an automated,
+        algorithmic trading system over the last three years, employing a Django
+        REST Framework API and Next.js frontend. My passion extends to
+        developing utilities for React and Python and any small mini-projects
+        that come to mind.
       </Typography>
       <Typography>
-        {
-          "Although my expertise is in React/Next.js and Django/FastAPI, I've worked with many different languages and frameworks, including Ruby on Rails. No matter what the stack, I'm able to adjust in virtually no time."
-        }
+        While I specialize in React/Next.js and Django/FastAPI, my experience
+        spans various languages and frameworks, including Ruby on Rails. My
+        adaptability is one of my key strengths, allowing me to thrive in
+        diverse tech stacks.
       </Typography>
     </ParagraphContainer>
   );

@@ -32,6 +32,17 @@ interface ProjectProps extends Project {
 }
 
 const projects: { [key: string]: Project } = {
+  datastars: {
+    name: 'Data Stars',
+    url: 'https://datastars.ai/',
+    description: 'Conversational AI for brands and teams.',
+  },
+  skybox: {
+    name: 'Alphagen Skybox',
+    url: 'https://skybox.alphagen.co/',
+    affiliation: 'Shape Immersive',
+    description: 'Gen. AI skybox creation for Unreal, Unity, and Blender.',
+  },
   weebox: {
     name: 'Weebox',
     url: 'https://weebox.io',
@@ -52,10 +63,6 @@ const projects: { [key: string]: Project } = {
     name: 'F3STIVAL',
     affiliation: 'Shape Immersive',
     description: 'Bulk ERC-1155 minting and Node bulk transfer script.',
-  },
-  'floor-trader': {
-    name: 'FloorTrader',
-    description: 'An API wrapper for Interactive Brokers.',
   },
   'format-as-you-type': {
     name: 'Format As You Type',
