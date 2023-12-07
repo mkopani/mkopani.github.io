@@ -22,10 +22,10 @@ type LinkType = {
 };
 
 const links: LinkType[] = [
-  { href: '/resume.pdf', name: 'Resume' },
-  { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
-  { href: 'https://github.com/mkopani', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/mkopani/', name: 'LinkedIn' },
+  { href: '/resume.pdf', name: 'Resume' },
+  { href: 'https://github.com/mkopani', name: 'GitHub' },
+  { href: 'mailto:mkopani+website@gmail.com', name: 'Email' },
 ];
 
 export default function About() {
@@ -77,7 +77,7 @@ export default function About() {
   );
 
   const renderPhotoAndLinks = () => (
-    <Stack alignItems="center" width="100%">
+    <Stack alignItems="center" width="100%" spacing={1}>
       {/* Photo */}
       <Box
         component="div"
@@ -85,7 +85,6 @@ export default function About() {
           width: '100%',
           height: '15em',
           position: 'relative',
-          mb: 2,
           borderStyle: 'solid',
           borderWidth: 5,
           borderRadius: 3,
@@ -122,6 +121,7 @@ export default function About() {
               href={href}
               target="_blank"
               fullWidth
+              variant="outlined"
               sx={{
                 backdropFilter: 'blur(8px)',
                 backgroundBlendMode: 'overlay',
@@ -132,6 +132,19 @@ export default function About() {
           </Box>
         ))}
       </Stack>
+      <Box sx={{ display: 'flex', width: '100%' }}>
+        <Button
+          href="https://calendly.com/mkopani/30min"
+          target="_blank"
+          fullWidth
+          sx={{
+            backdropFilter: 'blur(8px)',
+            backgroundBlendMode: 'overlay',
+          }}
+        >
+          Schedule a Meeting
+        </Button>
+      </Box>
     </Stack>
   );
 
