@@ -33,28 +33,36 @@ export default function About() {
     <ParagraphContainer>
       <Typography>
         My name is Mark Kopani and I’m a full stack developer born, raised, and
-        based out of Vancouver, BC. I have a diverse background that places me
-        at the intersection of software, data, and finance. While graduating
-        from UBC with a BSc in Statistics and completing the CFA Level I exam in
-        2019, I started my own web development small business. I’ve built
-        software solutions from the ground up for several small businesses and
-        startups.
+        living in Vancouver, BC. I have a diverse background that places me at
+        the intersection of software, data, and finance. While graduating from
+        UBC with a BSc in Statistics and completing the CFA Level I exam in
+        2019, I started my own web development business. I’ve built software
+        solutions from the ground up for several small businesses and startups.
       </Typography>
       <Typography>
         In late 2021, I transitioned to Web3 development and joined{' '}
         <Link href="https://www.shapeimmersive.com/">Shape Immersive</Link> in
-        the new year. Throughout my year at Shape, I’ve had the privilege of
+        the new year. Throughout my time at Shape, I’ve had the privilege of
         working on a variety of Web3 tools and SaaS products.
       </Typography>
       <Typography>
-        In my spare time, I’ve been building an automated, algorithmic trading
-        system with a Django REST Framework API and Next.js frontend. I’ve also
-        worked on tools and packages for React and Python.
+        My journey in generative AI development began in early 2023 after
+        experiencing the power of ChatGPT. This led me to building one of my
+        favorite projects to date,{' '}
+        <Link href="https://skybox.alphagen.co/">
+          {"AlphaGen's Skybox Generator"}
+        </Link>
+        , with more exciting releases on the way.
       </Typography>
       <Typography>
-        Although my expertise is in React/Next.js and Python/Django, I’ve worked
-        with many different languages and frameworks. No matter what the stack,
-        I’m able to adjust in virtually no time.
+        {
+          "In my spare time, I've been building an automated, algorithmic trading system with a Django REST Framework API and Next.js frontend. I've also worked on tools and packages for React and Python."
+        }
+      </Typography>
+      <Typography>
+        {
+          "Although my expertise is in React/Next.js and Django/FastAPI, I've worked with many different languages and frameworks, including Ruby on Rails. No matter what the stack, I'm able to adjust in virtually no time."
+        }
       </Typography>
     </ParagraphContainer>
   );
@@ -78,9 +86,10 @@ export default function About() {
       >
         <Image
           alt="A picture of me on Long Beach in British Columbia."
-          src="/images/website_headshot.png"
+          src="/images/headshot.jpeg"
           quality={100}
           fill
+          priority
           style={{
             objectFit: 'cover',
             userSelect: 'none',

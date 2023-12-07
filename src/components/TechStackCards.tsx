@@ -19,6 +19,7 @@ const stacks: TechStackProps[] = [
       'Redux',
       'Material UI',
       'CSS, Sass',
+      'Formik',
       'Three.js / BabylonJS',
       'Web3.js',
     ],
@@ -26,24 +27,20 @@ const stacks: TechStackProps[] = [
   {
     title: 'Server-side',
     items: [
-      'Django, FastAPI, Flask',
-      'Node.js / TypeScript',
       'LangChain / GPT API',
+      'Django / Django REST Framework',
+      'FastAPI',
+      'Flask',
+      'Node.js / TypeScript',
       'Stable Diffusion',
+      'FAISS',
       'NumPy, Pandas',
       'Scikit-learn',
     ],
   },
   {
-    title: 'Utilities',
-    items: [
-      'AWS',
-      'Docker',
-      'MongoDB',
-      'MongoDB Atlas',
-      'PostgreSQL',
-      'Postman',
-    ],
+    title: 'Infrastructure',
+    items: ['AWS', 'Docker', 'MongoDB / MongoDB Atlas', 'PostgreSQL'],
   },
 ];
 
