@@ -8,7 +8,7 @@ import theme from '@/styles/theme';
 
 import type { AppProps } from 'next/app';
 
-export const DEFAULT_TITLE = 'Mark Kopani | Full-Stack Web3 Developer';
+export const DEFAULT_TITLE = 'Mark Kopani | Full-Stack Generative AI Developer';
 export const SEO_IMAGES = [
   {
     url: '/images/seo_thumbnail.png',
