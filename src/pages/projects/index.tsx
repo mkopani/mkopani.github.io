@@ -32,6 +32,11 @@ interface ProjectProps extends Project {
 }
 
 const projects: { [key: string]: Project } = {
+  minidoc: {
+    name: 'MiniDoc',
+    url: 'https://github.com/mkopani/minidoc',
+    description: 'A mini(mal) replica of Google Docs.',
+  },
   datastars: {
     name: 'Data Stars',
     url: 'https://datastars.ai/',
