@@ -27,11 +27,11 @@ const stacks: TechStackProps[] = [
   {
     title: 'Server-side',
     items: [
-      'LangChain / GPT API',
       'Django / Django REST Framework',
       'FastAPI',
       'Flask',
       'Node.js / TypeScript',
+      'LangChain / OpenAI API',
       'Stable Diffusion',
       'FAISS',
       'NumPy, Pandas',
@@ -40,7 +40,16 @@ const stacks: TechStackProps[] = [
   },
   {
     title: 'Infrastructure',
-    items: ['AWS', 'Docker', 'MongoDB / MongoDB Atlas', 'PostgreSQL'],
+    items: [
+      'Docker',
+      'CloudFormation/CDK',
+      'AWS Lambda',
+      'API Gateway',
+      'AWS SQS',
+      'DynamoDB',
+      'MongoDB',
+      'PostgreSQL',
+    ],
   },
 ];
 

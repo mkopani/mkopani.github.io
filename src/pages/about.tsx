@@ -62,10 +62,11 @@ export default function About() {
       </Typography>
       <Typography>
         Outside work hours, I have immersed myself in building an automated,
-        algorithmic trading system over the last three years, employing a Django
-        REST Framework API and Next.js frontend. My passion extends to
-        developing utilities for React and Python and any small mini-projects
-        that come to mind.
+        algorithmic trading system over the last four years, employing a
+        Dockerized Django API, Next.js frontend, and{' '}
+        <Link href="https://lumibot.lumiwealth.com/">Lumibot</Link> trader. My
+        passion extends to developing utilities for React and Python and any
+        small mini-projects that come to mind.
       </Typography>
       <Typography>
         While I specialize in React/Next.js and Django/FastAPI, my experience
